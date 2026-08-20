@@ -2,107 +2,100 @@
 <html>
    <head>
       <title>GUI de Calculadora</title>
-      <meta name="author" content="Prof. Fábio">
+      <meta name="author" content="Grupo 1">
       <meta name="copyright" content="PI/IHC">
       <meta name="keywords" content="HTML">
       <style type="text/css">
-         /* Reset básico e tipografia moderna */
-         * {
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-         }
-
          body {
-            background-color: #ffffff;
+            background-color: #c0c0c0; 
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
          }
 
          fieldset {
-            background-color: #ffffff;
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            padding: 24px 32px;
+            background-color: #f0f0f0;
+            border: 2px solid #808080;
+            border-top-color: #dfdfdf;
+            border-left-color: #dfdfdf;
+            padding: 20px;
             margin: 0;
          }
 
          legend {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: #333;
-            text-align: center;
-            margin-bottom: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border: 1px solid #999;
          }
 
          table {
             border-collapse: separate;
-            border-spacing: 12px;
+            border-spacing: 6px;
          }
 
          input[type="text"] {
-            width: 80px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
+            width: 75px;
+            padding: 4px 6px;
+            border: 1px solid #7f7f7f;
+            background-color: #ffffff;
+            font-size: 0.95rem;
+            text-align: right;
             outline: none;
-            transition: border-color 0.2s;
-            text-align: center;
          }
 
          input[type="text"]:focus {
-            border-color: #007bff;
+            border-color: #000;
          }
 
          input[readonly] {
-            background-color: #e9ecef;
-            color: #d93025;
+            background-color: #e6e6e6;
+            color: #cc0000;
             font-weight: bold;
-            border-color: #ced4da;
          }
 
          form label.num, form label.res {
-            color: #4a5568;
-            font-weight: 600;
-            font-size: 0.95rem;
+            color: #000;
+            font-weight: bold;
+            font-size: 0.9rem;
          }
 
          input[type="button"] {
-            width: 100px;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            font-size: 0.95rem;
+            width: 110px;
+            padding: 6px;
+            background-color: #e1e1e1;
+            border: 1px solid #adadad;
+            border-radius: 2px;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: background-color 0.2s, transform 0.1s;
+            font-weight: bold;
+         }
+
+         input[type="button"]:hover {
+            background-color: #e5f1fb;
+            border-color: #0078d7;
          }
 
          input[type="button"]:active {
-            transform: scale(0.95);
+            background-color: #cce4f7;
+            border-color: #005499;
          }
 
-         form input.oper {
-            background-color: #e2e8f0;
-            color: #2b6cb0;
-            font-weight: 700;
-         }
-
-         form input.oper:hover {
-            background-color: #cbd5e1;
-         }
-
+         /* Botão Limpar com destaque funcional */
          form input.limpar {
-            background-color: #ef4444;
-            color: white;
-            font-weight: 700;
+            background-color: #f0d0d0;
+            border-color: #c87878;
+            color: #900;
          }
 
          form input.limpar:hover {
-            background-color: #dc2626;
+            background-color: #f8d7da;
+            border-color: #dc3545;
          }
       </style>
       <script type="text/javascript">
