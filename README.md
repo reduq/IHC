@@ -12,6 +12,7 @@
 - Não trabalhar diretamente na main.
 - Manter os arquivos organizados e utilizar mensagens de commit claras.
 - Antes de fazer o pull request, verificar se todas as alterações estão funcionando corretamente.
+- Seguir o nome dos exercícios e suas respostas de acordo com o nome no Moodle.
 
 ### Organização
 
