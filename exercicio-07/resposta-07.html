@@ -1,0 +1,189 @@
+
+<html>
+   <head>
+      <title>GUI de Calculadora</title>
+      <meta name="author" content="Prof. Fábio">
+      <meta name="copyright" content="PI/IHC">
+      <meta name="keywords" content="HTML">
+      <style type="text/css">
+         /* Reset básico e tipografia moderna */
+         * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+         }
+
+         body {
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+         }
+
+         fieldset {
+            background-color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            padding: 24px 32px;
+            margin: 0;
+         }
+
+         legend {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+         }
+
+         table {
+            border-collapse: separate;
+            border-spacing: 12px;
+         }
+
+         input[type="text"] {
+            width: 80px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.2s;
+            text-align: center;
+         }
+
+         input[type="text"]:focus {
+            border-color: #007bff;
+         }
+
+         input[readonly] {
+            background-color: #e9ecef;
+            color: #d93025;
+            font-weight: bold;
+            border-color: #ced4da;
+         }
+
+         form label.num, form label.res {
+            color: #4a5568;
+            font-weight: 600;
+            font-size: 0.95rem;
+         }
+
+         input[type="button"] {
+            width: 100px;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+         }
+
+         input[type="button"]:active {
+            transform: scale(0.95);
+         }
+
+         form input.oper {
+            background-color: #e2e8f0;
+            color: #2b6cb0;
+            font-weight: 700;
+         }
+
+         form input.oper:hover {
+            background-color: #cbd5e1;
+         }
+
+         form input.limpar {
+            background-color: #ef4444;
+            color: white;
+            font-weight: 700;
+         }
+
+         form input.limpar:hover {
+            background-color: #dc2626;
+         }
+      </style>
+      <script type="text/javascript">
+         function Limpar() {
+            document.calculadora.num1.value = '';
+            document.calculadora.num2.value = '';
+            document.calculadora.resultado.value = '';
+         
+         }
+         
+         function Calcula(oper) {
+            var valor1 = document.calculadora.num1.value;
+            var valor2 = document.calculadora.num2.value;
+            
+            if (oper == "somar") {
+               var valor = parseFloat(valor1) + parseFloat(valor2);
+            } 
+            else if (oper == "subtrair") {
+               var valor = parseFloat(valor1) - parseFloat(valor2);
+            } 
+            else if (oper == "multiplicar") {
+               var valor = parseFloat(valor1) * parseFloat(valor2);
+            } 
+            else if (oper == "dividir") {
+               var valor = parseFloat(valor1) / parseFloat(valor2);
+            }
+            else if (oper == "quadrado") {
+               let x = parseFloat(valor1);
+               var valor = Math.pow(x,2);
+            }
+            else if (oper == "raiz") {
+               let x = parseFloat(valor1);
+               var valor = Math.sqrt(x);
+            }
+            else if (oper == "potencia") {
+               var x = parseFloat(valor1);
+               let y = parseFloat(valor2);
+               var valor = Math.pow(x,y);
+            }
+            
+            document.calculadora.resultado.value = valor;
+         }
+      </script>
+   </head>
+   <body>
+      <form name="calculadora" method="post" action="">
+         <fieldset>
+            <legend>Calculadora</legend>
+             <table>
+               <tbody>
+                  <!-- primeira linha da tabela -->
+                  <tr>
+                     <td><label class="num" for="num1">1º Num</label></td>
+                     <td><input name="num1" id="num1" type="text" size="5"></td>
+                     <td><input name="somar" class="oper" value="+" onclick="Calcula('somar')" type="button"></td>
+                     <td><input name="subtrair" class="oper" value="-" onclick="Calcula('subtrair')" type="button"></td>
+                  </tr>
+                  <!-- segunda linha da tabela -->
+                  <tr>
+                     <td><label class="num" for="num2">2º Num</label></td>
+                     <td><input name="num2" id="num2" type="text" size="5"></td>
+                     <td><input name="multiplicar" class="oper" value="x" onclick="Calcula('multiplicar')" type="button"></td>
+                     <td><input name="dividir" class="oper" value="/" onclick="Calcula('dividir')" type="button"></td>
+                  </tr>
+                  <!-- terceira linha da tabela -->
+                  <tr>
+                     <td><label class="res" for="resultado">Resultado</label></td>
+                     <td><input name="resultado" id="resultado" type="text" readonly="true" size="5"></td>
+                     <td><input name="quadrado" class="oper" value="Quadrado" onclick="Calcula('quadrado')" type="button"></td>
+                     <td><input name="potencia" class="oper" value="Potência" onclick="Calcula('potencia')" type="button"></td>
+                  </tr>
+                  <!-- quarta linha da tabela -->
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td><input name="raiz" class="oper" value="Raiz Quadrada" onclick="Calcula('raiz')" type="button"></td>
+                     <td><input class="limpar" name="limpar" value="Limpar" onclick="Limpar()" type="button"></td>
+                  </tr>
+               </tbody>
+            </table>
+         </fieldset>
+      </form>
+   </body>
+</html>
