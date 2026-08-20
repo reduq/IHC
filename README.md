@@ -10,7 +10,7 @@
 - Caso não consiga terminar, avisar o grupo e deixar a branch disponível para que outro integrante possa continuar.
 - Caso ainda vá terminar, avise no grupo para ninguém mexer na sua branch.
 - Não trabalhar diretamente na main.
-- Manter os arquivos organizados e utilizar mensagens de commit claras.
+- Manter os arquivos organizados (siga o padrão) e utilizar mensagens de commit claras.
 - Antes de fazer o pull request, verificar se todas as alterações estão funcionando corretamente.
 - Seguir o nome dos exercícios e suas respostas de acordo com o nome no Moodle.
 
