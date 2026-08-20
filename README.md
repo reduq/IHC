@@ -4,7 +4,7 @@
 ### Regras
 
 - Sempre criar uma branch para desenvolver um exercício ou parte dele.
-- A branch deve ter o nome do exercício que está sendo desenvolvido.
+- A branch deve ter o nome do exercício e o nome de quem está sendo desenvolvendo. ex: exercicio-02-renan
 - Antes de começar, avisar no grupo qual exercício está sendo desenvolvido.
 - Caso o exercício demande mais um arquivo, crie uma pasta exercício dentro da pasta do exercício-x e coloque ali os arquivos.
 - Caso não consiga terminar, avisar o grupo e deixar a branch disponível para que outro integrante possa continuar.
@@ -29,12 +29,13 @@ IHC/
 |       └── arquivo2
 └── ...
 ```
+
+### Padrão de nomeação
+
 - exercicio-xy.[extensão do arquivo]: contém a resolução do exercício.
-- resposta-xy.txt: contém o link para o vídeo na nuvem explicando a resolução do exercício.
+- resposta-xy.txt: para o arquivo com o link para o vídeo na nuvem explicando a resolução do exercício.
 - exercício-xy: nome da pasta para exercícios que possuem mais de 1 arquivo de resolução.
-
-**Sempre seguir esse padrão de nomes**
-
+- exercicio-xy-[nome]: para branchs.
 
 ## Como entregar 'resposta.txt'
 
