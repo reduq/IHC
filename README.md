@@ -32,10 +32,10 @@ IHC/
 
 ### Padrão de nomeação
 
-- exercicio-xy.[extensão do arquivo]: contém a resolução do exercício.
-- resposta-xy.txt: para o arquivo com o link para o vídeo na nuvem explicando a resolução do exercício.
-- exercício-xy: nome da pasta para exercícios que possuem mais de 1 arquivo de resolução.
-- exercicio-xy-[nome]: para branchs.
+- exercicio-xy: resolução do exercício.
+- exercício-xy: pastas para exercícios que possuem mais de 1 arquivo de resolução.
+- exercicio-xy-[nome]: branchs.
+- resposta-xy.txt: arquivo com o link para o vídeo na nuvem explicando a resolução do exercício.
 
 ## Como entregar 'resposta.txt'
 
