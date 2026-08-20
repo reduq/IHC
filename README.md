@@ -29,7 +29,7 @@ IHC/
 └── ...
 ```
 - exercicio-xy.[extensão do arquivo]: contém a resolução do exercício.
-- resposta.txt: contém o link para o vídeo na nuvem explicando a resolução do exercício.
+- resposta-xy.txt: contém o link para o vídeo na nuvem explicando a resolução do exercício.
 - exercício-xy: nome da pasta para exercícios que possuem mais de 1 arquivo de resolução.
 
 **Sempre seguir esse padrão de nomes**
