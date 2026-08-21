@@ -39,7 +39,7 @@ IHC/
 
 ## Como entregar 'resposta.txt'
 
-1. Dar upload do vídeo para seu OneDrive institucional.
+1. Dar upload do arquivo ou vídeo para seu OneDrive institucional.
 2. Copiar o link de compartilhamento do arquivo no OneDrive.
 3. Criar um arquivo .txt.
 4. Colar o link de compartilhamento no arquivo .txt e salvar.
