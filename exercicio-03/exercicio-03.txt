@@ -1,0 +1,4 @@
+3-) Qual é a importância da Engenharia de Software para garantir ao software um bom nível de interação e quais as técnicas que utilizamos para isso?
+
+A sua importância está em garantir que o software seja desenvolvido considerando as necessidades dos usuários, suas tarefas e a forma como eles irão interagir com o sistema, evitando falhas de comunicação e tornando a utilização mais eficiente.
+Técnicas como a análise completa de requisitos, dos usuários, das tarefas, da concepção, da especificação, da prototipação da interface do usuário e da avaliação da utilização do protótipo são utilizadas na Engenharia de Software para desenvolver interfaces de interação mais claras, eficientes e fáceis de utilizar.
