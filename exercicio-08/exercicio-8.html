@@ -1,0 +1,229 @@
+<html>
+   <head>
+      <meta charset="UTF-8"> <!-- NOVO: corrige os acentos -->
+      <title>GUI de Calculadora</title>
+      <meta name="author" content="Grupo 1">
+      <meta name="copyright" content="PI/IHC">
+      <meta name="keywords" content="HTML">
+      <style type="text/css">
+         body {
+            background-color: #c0c0c0; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+         }
+
+         fieldset {
+            background-color: #f0f0f0;
+            border: 2px solid #808080;
+            border-top-color: #dfdfdf;
+            border-left-color: #dfdfdf;
+            padding: 20px;
+            margin: 0;
+         }
+
+         legend {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #000;
+            background-color: #e0e0e0;
+            padding: 2px 8px;
+            border: 1px solid #999;
+         }
+
+         table {
+            border-collapse: separate;
+            border-spacing: 6px;
+         }
+
+         input[type="text"] {
+            width: 75px;
+            padding: 4px 6px;
+            border: 1px solid #7f7f7f;
+            background-color: #ffffff;
+            font-size: 0.95rem;
+            text-align: right;
+            outline: none;
+         }
+
+         input[type="text"]:focus {
+            border-color: #000;
+         }
+
+         input[readonly] {
+            background-color: #e6e6e6;
+            color: #cc0000;
+            font-weight: bold;
+         }
+
+         form label.num, form label.res {
+            color: #000;
+            font-weight: bold;
+            font-size: 0.9rem;
+         }
+
+         input[type="button"] {
+            width: 110px;
+            padding: 6px;
+            background-color: #e1e1e1;
+            border: 1px solid #adadad;
+            border-radius: 2px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: bold;
+         }
+
+         input[type="button"]:hover {
+            background-color: #e5f1fb;
+            border-color: #0078d7;
+         }
+
+         input[type="button"]:active {
+            background-color: #cce4f7;
+            border-color: #005499;
+         }
+
+         /* Botão Limpar com destaque funcional */
+         form input.limpar {
+            background-color: #f0d0d0;
+            border-color: #c87878;
+            color: #900;
+         }
+
+         form input.limpar:hover {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+         }
+      </style>
+      <script type="text/javascript">
+         // NOVO: guarda o último resultado numérico (o campo pode ficar com texto formatado)
+         var ultimoValor = null;
+
+         function Limpar() {
+            document.calculadora.num1.value = '';
+            document.calculadora.num2.value = '';
+            document.calculadora.resultado.value = '';
+            ultimoValor = null; // NOVO
+         
+         }
+         
+         function Calcula(oper) {
+            var valor1 = document.calculadora.num1.value;
+            var valor2 = document.calculadora.num2.value;
+            
+            if (oper == "somar") {
+               var valor = parseFloat(valor1) + parseFloat(valor2);
+            } 
+            else if (oper == "subtrair") {
+               var valor = parseFloat(valor1) - parseFloat(valor2);
+            } 
+            else if (oper == "multiplicar") {
+               var valor = parseFloat(valor1) * parseFloat(valor2);
+            } 
+            else if (oper == "dividir") {
+               var valor = parseFloat(valor1) / parseFloat(valor2);
+            }
+            else if (oper == "quadrado") {
+               let x = parseFloat(valor1);
+               var valor = Math.pow(x,2);
+            }
+            else if (oper == "raiz") {
+               let x = parseFloat(valor1);
+               var valor = Math.sqrt(x);
+            }
+            else if (oper == "potencia") {
+               var x = parseFloat(valor1);
+               let y = parseFloat(valor2);
+               var valor = Math.pow(x,y);
+            }
+            
+            ultimoValor = valor; // NOVO
+            document.calculadora.resultado.value = valor;
+         }
+
+         // NOVO: botões de formatação 0.00 | R$ | 0.00%
+         function Formata(tipo) {
+            if (ultimoValor === null || isNaN(ultimoValor)) return;
+
+            var campo = document.calculadora.resultado;
+
+            if (tipo == "decimal") {
+               campo.value = Number(ultimoValor).toFixed(2);
+            }
+            else if (tipo == "moeda") {
+               campo.value = Number(ultimoValor).toLocaleString('pt-BR', {style: 'currency', currency: 'BRL'});
+            }
+            else if (tipo == "percentual") {
+               campo.value = Number(ultimoValor).toLocaleString('pt-BR', {style: 'percent', minimumFractionDigits: 2, maximumFractionDigits: 2});
+            }
+         }
+
+         // NOVO: botões >> e << (enviam o resultado para o 2º ou 1º número)
+         function Move(direcao) {
+            if (ultimoValor === null || isNaN(ultimoValor)) return;
+
+            if (direcao == "direita") {
+               document.calculadora.num2.value = ultimoValor;
+            } else {
+               document.calculadora.num1.value = ultimoValor;
+            }
+         }
+      </script>
+   </head>
+   <body>
+      <form name="calculadora" method="post" action="">
+         <fieldset>
+            <legend>Calculadora</legend>
+             <table>
+               <tbody>
+                  <!-- primeira linha da tabela -->
+                  <tr>
+                     <td><label class="num" for="num1">1º Num</label></td>
+                     <td><input name="num1" id="num1" type="text" size="5"></td>
+                     <td><input name="somar" class="oper" value="+" onclick="Calcula('somar')" type="button"></td>
+                     <td><input name="subtrair" class="oper" value="-" onclick="Calcula('subtrair')" type="button"></td>
+                  </tr>
+                  <!-- segunda linha da tabela -->
+                  <tr>
+                     <td><label class="num" for="num2">2º Num</label></td>
+                     <td><input name="num2" id="num2" type="text" size="5"></td>
+                     <td><input name="multiplicar" class="oper" value="x" onclick="Calcula('multiplicar')" type="button"></td>
+                     <td><input name="dividir" class="oper" value="/" onclick="Calcula('dividir')" type="button"></td>
+                  </tr>
+                  <!-- terceira linha da tabela -->
+                  <tr>
+                     <td><label class="res" for="resultado">Resultado</label></td>
+                     <td><input name="resultado" id="resultado" type="text" readonly="true" size="5"></td>
+                     <td><input name="quadrado" class="oper" value="Quadrado" onclick="Calcula('quadrado')" type="button"></td>
+                     <td><input name="potencia" class="oper" value="Potência" onclick="Calcula('potencia')" type="button"></td>
+                  </tr>
+                  <!-- quarta linha da tabela -->
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td><input name="raiz" class="oper" value="Raiz Quadrada" onclick="Calcula('raiz')" type="button"></td>
+                     <td><input class="limpar" name="limpar" value="Limpar" onclick="Limpar()" type="button"></td>
+                  </tr>
+                  <!-- NOVO: quinta linha da tabela -->
+                  <tr>
+                     <td></td>
+                     <td><input name="decimal" class="oper" value="0.00" onclick="Formata('decimal')" type="button"></td>
+                     <td><input name="moeda" class="oper" value="R$" onclick="Formata('moeda')" type="button"></td>
+                     <td><input name="percentual" class="oper" value="0.00%" onclick="Formata('percentual')" type="button"></td>
+                  </tr>
+                  <!-- NOVO: sexta linha da tabela -->
+                  <tr>
+                     <td></td>
+                     <td></td>
+                     <td><input name="esquerda" class="oper" value="&lt;&lt;" onclick="Move('esquerda')" type="button"></td>
+                     <td><input name="direita" class="oper" value="&gt;&gt;" onclick="Move('direita')" type="button"></td>
+                  </tr>
+               </tbody>
+            </table>
+         </fieldset>
+      </form>
+   </body>
+</html>
